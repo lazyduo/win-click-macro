@@ -9,6 +9,7 @@ class Window:
     def __init__(self, **kwargs):
         self.name = kwargs['name']
         self.hwnd = self.find_window()
+        self.dic = {}
 
         print(self.name)
 
@@ -20,7 +21,11 @@ class Window:
         pass
 
     def find_window(self):
+        hwnd = win32gui.FindWindow(None, self.name)
+        print(win32gui.GetClassName(hwnd))
+        print(hwnd)
         hwnd = win32gui.FindWindow("ApplicationFrameWindow", self.name)
+        print(win32gui.GetClassName(hwnd))
         print("current window hwnd : {}".format(hwnd))
         return hwnd
 
@@ -36,6 +41,27 @@ class Window:
         print("set active window of {}".format(self.hwnd))
         pass
 
+    def get_window_title(self):
+        win_list = []
+        win32gui.EnumWindows(self.callback, win_list)
+
+        self.dic = {}
+
+        for window in win_list:
+            self.dic[window[0]] = window[1]
+            print(window)
+
+    
+    def callback(self, hwnd, strings):
+        if win32gui.IsWindowVisible(hwnd):
+            window_title = win32gui.GetWindowText(hwnd)
+            left, top, right, bottom = win32gui.GetWindowRect(hwnd)
+            if window_title and right-left and bottom-top:
+                # strings.append('0x{:08x}: "{}"'.format(hwnd, window_title))
+                strings.append([window_title, hwnd])
+        
+        
+        return True
 
     # # hwnd = win32gui.GetActiveWindow()
     # # pos = (300, 900)

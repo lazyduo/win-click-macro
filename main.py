@@ -11,4 +11,5 @@ if __name__ == '__main__':
         cfg = yaml.load(f, Loader=yaml.FullLoader)
         w = Window(**cfg['window'])
 
-    w.set_foreground_window()
+    # w.set_foreground_window()
+    w.get_window_title()
