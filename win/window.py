@@ -20,14 +20,18 @@ class Window:
         pass
 
     def find_window(self):
-        hwnd = win32gui.FindWindow(None, self.name)
+        hwnd = win32gui.FindWindow("ApplicationFrameWindow", self.name)
         print("current window hwnd : {}".format(hwnd))
         return hwnd
 
 
     def set_foreground_window(self):
         # win32gui.ShowWindow(self.hwnd,5)
+        
+        win32gui.ShowWindow(self.hwnd, win32con.SW_RESTORE)
         win32gui.SetForegroundWindow(self.hwnd)
+    
+        
         # win32gui.ShowWindow(self.hwnd)
         print("set active window of {}".format(self.hwnd))
         pass
