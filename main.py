@@ -10,3 +10,5 @@ if __name__ == '__main__':
     with open(cfg_file, 'r', encoding="utf-8") as f:
         cfg = yaml.load(f, Loader=yaml.FullLoader)
         w = Window(**cfg['window'])
+
+    w.set_foreground_window()

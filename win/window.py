@@ -8,15 +8,30 @@ import time
 class Window:
     def __init__(self, **kwargs):
         self.name = kwargs['name']
+        self.hwnd = self.find_window()
+
         print(self.name)
-    
+
+    def leftClick():
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
+        time.sleep(.1)
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
+        print('Left Click')
+        pass
+
+    def find_window(self):
+        hwnd = win32gui.FindWindow(None, self.name)
+        print("current window hwnd : {}".format(hwnd))
+        return hwnd
 
 
-    # def leftClick():
-    #     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
-    #     time.sleep(.1)
-    #     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
-    #     print('Left Click')
+    def set_foreground_window(self):
+        # win32gui.ShowWindow(self.hwnd,5)
+        win32gui.SetForegroundWindow(self.hwnd)
+        # win32gui.ShowWindow(self.hwnd)
+        print("set active window of {}".format(self.hwnd))
+        pass
+
 
     # # hwnd = win32gui.GetActiveWindow()
     # # pos = (300, 900)
