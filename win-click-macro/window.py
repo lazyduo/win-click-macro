@@ -5,6 +5,12 @@ import win32gui
 import win32con
 import time
 
+class Window:
+    def __init__():
+        pass
+
+    
+
 
 def leftClick():
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)

@@ -67,7 +67,7 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'pypiwin32'
+        'pypiwin32', 'PyYAML'
     ],
 
     # List additional groups of dependencies here (e.g. development
