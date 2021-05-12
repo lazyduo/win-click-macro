@@ -1,0 +1,47 @@
+# operating system files
+.DS_Store
+
+# data files
+*.mp4
+*.avi
+*.mp3
+*.jpg
+*.jpeg
+*.png
+*.txt
+*.json
+*.yaml
+*.db
+*.m4a
+
+# configs
+/config/
+*.cfg
+
+# cached
+__pycache__/*
+
+# data files
+/data/
+*/generated/*
+
+# setuptools intermediate files
+*.pyc
+*.egg-info
+/.eggs/
+/dist/
+/build/
+
+# idea project files
+/.idea/
+/venv/
+
+# vs code
+/.vscode/
+
+# database
+*.sqlite3
+
+# config
+/.history/
+*.ini
