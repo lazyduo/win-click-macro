@@ -1,7 +1,11 @@
+from PyQt5.uic.properties import QtWidgets
 from win.window import Window
+from ui.ui import Ui
+from PyQt5 import QtWidgets, uic
 import os
 import yaml
 import time
+import sys
 
 
 if __name__ == '__main__':
@@ -12,4 +16,10 @@ if __name__ == '__main__':
         w = Window(**cfg['window'])
 
     # w.set_foreground_window()
-    w.get_window_title()
+    # w.get_window_title()
+
+
+
+    app = QtWidgets.QApplication(sys.argv)
+    ui = Ui()
+    app.exec_()
