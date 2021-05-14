@@ -10,7 +10,7 @@
 *.png
 *.txt
 *.json
-*.yaml
+# *.yaml
 *.db
 *.m4a
 

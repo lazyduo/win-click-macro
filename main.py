@@ -21,5 +21,5 @@ if __name__ == '__main__':
 
 
     app = QtWidgets.QApplication(sys.argv)
-    ui = Ui()
+    ui = Ui(**cfg['ui'])
     app.exec_()
