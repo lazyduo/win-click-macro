@@ -6,17 +6,11 @@ import win32con
 import time
 
 class Window:
-    def __init__(self, hwnd, **kwargs):
-        if kwargs:
-            self.name = kwargs['name']
-        else:
-            self.name = None
-        self.hwnd = hwnd
+    def __init__(self, **kwargs):
+        self.name = kwargs.get('name', None)
+        self.hwnd = kwargs.get('hwnd', None)
         # self.hwnd = self.find_window()
         self.dic = {}
-
-        print(self.name)
-        print("hwnd : {}".format(self.hwnd))
 
     def leftClick():
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
@@ -31,8 +25,18 @@ class Window:
         print(hwnd)
         hwnd = win32gui.FindWindow("ApplicationFrameWindow", self.name)
         print(win32gui.GetClassName(hwnd))
-        print("current window hwnd : {}".format(hwnd))
+        print("current window hwnd : 0x{:08x}".format(hwnd))
         return hwnd
+
+    def get_origin(self):
+        hwnd = win32gui.GetActiveWindow()
+        (x, y) = win32api.GetCursorPos()
+        return hwnd, (x, y)
+
+    def back_origin(self, origin_hwnd, Pos):
+        win32gui.ShowWindow(origin_hwnd, win32con.SW_RESTORE)
+        win32gui.SetForegroundWindow(origin_hwnd)
+        win32api.SetCursorPos(Pos)
 
 
     def set_foreground_window(self):
