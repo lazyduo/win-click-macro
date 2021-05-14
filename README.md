@@ -6,6 +6,9 @@
 
 다른 업무를 수행 중이더라도 잠깐 타겟 프로그램을 ForeGround로 보내 클릭 후 다시 원래의 Window로 돌아갑니다.
 
+스크롤바를 통해 상대적 위치를 직관적으로 설정할 수 있으며, 설정 위치를 'Test Position'으로 확인 할 수 있습니다.
+
+
 <br>
 
 
@@ -33,6 +36,12 @@ gui class, window control class, main 기본 연결 완료.
 adjustment 버튼 클릭 -> 마우스 움직일 때 마다 좌표 업로드. 클릭시 해당 좌표 기억.
 
 sequence 만들기. 클릭, 엔터, 타이핑 등의 sequence를 추가하여 run 할 수 있도록 구현
+
+- 21-05-15 TODO
+
+thread 시작->중지 가능. 현재는 5번만 반복.
+
+test position 업데이트. click macro 동작 확인.
 
 <br>
 
