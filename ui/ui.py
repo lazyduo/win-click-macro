@@ -8,7 +8,7 @@ import os
 class Ui(QtWidgets.QMainWindow):
     def __init__(self, **kwargs):
         super(Ui, self).__init__()
-        self.ui_name = kwargs['name']
+        self.ui_name = kwargs.get('name', None)
 
         # load custom gui
         self.path = os.path.join(
@@ -20,11 +20,14 @@ class Ui(QtWidgets.QMainWindow):
         self.selected_window_hwnd = None
         self.selected_window_name = None
         self.time_interval = 1
+        self.x_ratio = self.horizontalSlider_2.value()
+        self.y_ratio = self.verticalSlider.value()
 
 
         # widget handle
         self.listWidget_1.itemDoubleClicked.connect(self.set_window_list)
         self.pushButton_3.clicked.connect(self.run_macro)
+        self.pushButton_5.clicked.connect(self.refresh_list)
         self.horizontalSlider_2.valueChanged.connect(self.set_x)
         self.verticalSlider.valueChanged.connect(self.set_y)
         self.horizontalSlider.valueChanged.connect(self.set_time_interval)
@@ -32,10 +35,9 @@ class Ui(QtWidgets.QMainWindow):
 
         self.show()
 
-    def btn_clicked(self):
-        print('hi')
 
     def load_window_list(self, window_lists):
+        self.listWidget_1.clear()
         for window_list in window_lists:
             self.listWidget_1.addItem(window_list)
 
@@ -49,26 +51,35 @@ class Ui(QtWidgets.QMainWindow):
 
     def set_x(self):
         self.textEdit_6.setText(str(self.horizontalSlider_2.value()))
+        self.x_ratio = self.horizontalSlider_2.value()
 
     def set_y(self):
         self.textEdit_7.setText(str(self.verticalSlider.value()))
+        self.y_ratio = self.verticalSlider.value()
 
     def set_time_interval(self):
         self.label_6.setText("{}초".format(self.horizontalSlider.value()))
 
+    def refresh_list(self):
+        win = Window()
+        window_list = win.get_window_title()
+        self.load_window_list(window_list)
+        self.textEdit_4.clear()
 
     def run_macro(self):
-        print("run macro")
+        print("run macro...")
         self.time_interval = self.horizontalSlider.value()
 
         context ={'name': self.selected_window_name, 'hwnd': self.selected_window_hwnd}
         macro = Window(**context)
 
+        # TODO thread
         for _ in range(5):
             time.sleep(self.time_interval)
             origin_hwnd, (init_x, init_y) = macro.get_origin()
             print("original_hwnd : {} / init_x : {} / init_y : {}".format(origin_hwnd, init_x, init_y))
             macro.set_foreground_window()
+            macro.click_target_window((self.x_ratio, self.y_ratio))
             macro.back_origin(origin_hwnd, (init_x, init_y))
         
         return True

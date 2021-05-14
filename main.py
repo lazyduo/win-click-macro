@@ -14,12 +14,7 @@ if __name__ == '__main__':
     with open(cfg_file, 'r', encoding="utf-8") as f:
         cfg = yaml.load(f, Loader=yaml.FullLoader)
         w = Window(**cfg['window'])
-
-    # w.set_foreground_window()
-    # w.get_window_title()
-
-
-
+        
     app = QtWidgets.QApplication(sys.argv)
     ui = Ui(**cfg['ui'])
     ui.load_window_list(w.get_window_title())

@@ -5,14 +5,14 @@ import win32gui
 import win32con
 import time
 
-class Window:
+class Window(object):
     def __init__(self, **kwargs):
         self.name = kwargs.get('name', None)
         self.hwnd = kwargs.get('hwnd', None)
         # self.hwnd = self.find_window()
         self.dic = {}
 
-    def leftClick():
+    def leftClick(self):
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
         time.sleep(.1)
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
@@ -45,10 +45,20 @@ class Window:
         win32gui.ShowWindow(self.hwnd, win32con.SW_RESTORE)
         win32gui.SetForegroundWindow(self.hwnd)
     
-        
         # win32gui.ShowWindow(self.hwnd)
-        print("set active window of {}".format(self.hwnd))
+        print("set ForegroundWindow : 0x{:08x} : {}".format(self.hwnd, self.name))
         pass
+
+    def click_target_window(self, Pos_ratio):
+        (x, y) = Pos_ratio
+        (left, top, right, bottom) = win32gui.GetWindowRect(self.hwnd)
+        new_x = int(right + (right-left) * x / 100)
+        new_y = int(top + (bottom-top) * y / 100)
+
+        win32api.SetCursorPos((new_x, new_y))
+        self.leftClick()
+
+
 
     def get_window_title(self):
         win_list = []
