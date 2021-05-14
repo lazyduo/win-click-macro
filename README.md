@@ -1,5 +1,14 @@
 # Click Macro for Window
 
+(Not Yet)
+
+타겟 프로그램(Window)를 설정하고, 해당 프로그램 안에서 원하는 위치에 클릭 이벤트를 발생시킵니다.
+
+다른 업무를 수행 중이더라도 잠깐 타겟 프로그램을 ForeGround로 보내 클릭 후 다시 원래의 Window로 돌아갑니다.
+
+<br>
+
+
 
 # Memo & TODO
 
