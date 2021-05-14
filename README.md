@@ -33,3 +33,13 @@ gui class, window control class, main 기본 연결 완료.
 adjustment 버튼 클릭 -> 마우스 움직일 때 마다 좌표 업로드. 클릭시 해당 좌표 기억.
 
 sequence 만들기. 클릭, 엔터, 타이핑 등의 sequence를 추가하여 run 할 수 있도록 구현
+
+<br>
+
+참고
+
+https://wikidocs.net/35496
+
+https://doc.qt.io/qt-5/qlistview.html
+
+https://opentutorials.org/module/544/9391
