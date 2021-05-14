@@ -31,6 +31,7 @@ class Ui(QtWidgets.QMainWindow):
         self.horizontalSlider_2.valueChanged.connect(self.set_x)
         self.verticalSlider.valueChanged.connect(self.set_y)
         self.horizontalSlider.valueChanged.connect(self.set_time_interval)
+        self.pushButton_6.clicked.connect(self.test_position)
         # self.text_Edit_4.textChanged.connect(self.get_window)
 
         self.show()
@@ -48,6 +49,7 @@ class Ui(QtWidgets.QMainWindow):
         print("selected window : {}".format(self.selected_window))
         self.textEdit_4.setText(self.selected_window)
         self.pushButton_3.setEnabled(True)
+        self.pushButton_6.setEnabled(True)
 
     def set_x(self):
         self.textEdit_6.setText(str(self.horizontalSlider_2.value()))
@@ -65,6 +67,14 @@ class Ui(QtWidgets.QMainWindow):
         window_list = win.get_window_title()
         self.load_window_list(window_list)
         self.textEdit_4.clear()
+        self.pushButton_3.setEnabled(False)
+        self.pushButton_6.setEnabled(False)
+
+    def test_position(self):
+        context ={'name': self.selected_window_name, 'hwnd': self.selected_window_hwnd, 'test': True}
+        test_win = Window(**context)
+        test_win.set_foreground_window()
+        test_win.click_target_window((self.x_ratio, self.y_ratio))
 
     def run_macro(self):
         print("run macro...")

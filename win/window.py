@@ -9,6 +9,7 @@ class Window(object):
     def __init__(self, **kwargs):
         self.name = kwargs.get('name', None)
         self.hwnd = kwargs.get('hwnd', None)
+        self.test_state = kwargs.get('test', False)
         # self.hwnd = self.find_window()
         self.dic = {}
 
@@ -51,12 +52,23 @@ class Window(object):
 
     def click_target_window(self, Pos_ratio):
         (x, y) = Pos_ratio
+        print("x, y : {}, {}".format(x, y))
         (left, top, right, bottom) = win32gui.GetWindowRect(self.hwnd)
-        new_x = int(right + (right-left) * x / 100)
+        new_x = int(left + (right-left) * x / 100)
         new_y = int(top + (bottom-top) * y / 100)
 
         win32api.SetCursorPos((new_x, new_y))
-        self.leftClick()
+        if not self.test_state :
+            self.leftClick()
+    
+    def click_target_window_test(self, Pos_ratio):
+        (x, y) = Pos_ratio
+        print("x, y : {}, {}".format(x, y))
+        (left, top, right, bottom) = win32gui.GetWindowRect(self.hwnd)
+        new_x = int(left + (right-left) * x / 100)
+        new_y = int(top + (bottom-top) * y / 100)
+
+        win32api.SetCursorPos((new_x, new_y))
 
 
 

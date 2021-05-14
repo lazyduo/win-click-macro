@@ -6,65 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>694</width>
-    <height>767</height>
+    <width>681</width>
+    <height>597</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>361</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>70</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>창 내 위치 설정</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>30</y>
-      <width>141</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>선택된 창 가져오기</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit_2">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>70</y>
-      <width>151</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QSlider" name="horizontalSlider">
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>120</y>
+      <y>40</y>
       <width>401</width>
       <height>22</height>
      </rect>
@@ -95,7 +49,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>120</y>
+      <y>40</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -110,8 +64,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>670</y>
+      <x>500</x>
+      <y>500</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -123,8 +77,8 @@
    <widget class="QPushButton" name="pushButton_4">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>670</y>
+      <x>590</x>
+      <y>500</y>
       <width>71</width>
       <height>41</height>
      </rect>
@@ -146,47 +100,11 @@
      <string>Click_macro</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_3">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>70</y>
-      <width>151</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>31</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>X</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>210</x>
-      <y>80</y>
-      <width>31</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Y</string>
-    </property>
-   </widget>
    <widget class="QListWidget" name="listWidget_1">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>330</y>
+      <x>10</x>
+      <y>160</y>
       <width>351</width>
       <height>281</height>
      </rect>
@@ -195,8 +113,8 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>300</y>
+      <x>10</x>
+      <y>130</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -211,8 +129,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>260</y>
+      <x>10</x>
+      <y>90</y>
       <width>591</width>
       <height>31</height>
      </rect>
@@ -221,8 +139,8 @@
    <widget class="QSlider" name="horizontalSlider_2">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>450</y>
+      <x>400</x>
+      <y>280</y>
       <width>160</width>
       <height>22</height>
      </rect>
@@ -237,8 +155,8 @@
    <widget class="QSlider" name="verticalSlider">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>380</y>
+      <x>600</x>
+      <y>210</y>
       <width>22</width>
       <height>160</height>
      </rect>
@@ -262,8 +180,8 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>570</y>
+      <x>410</x>
+      <y>400</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -282,8 +200,8 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>570</y>
+      <x>540</x>
+      <y>400</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -300,7 +218,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>120</y>
+      <y>40</y>
       <width>41</width>
       <height>21</height>
      </rect>
@@ -312,8 +230,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>620</y>
+      <x>240</x>
+      <y>450</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -323,16 +241,19 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_6">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>620</y>
+      <x>410</x>
+      <y>450</y>
       <width>121</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>test Position</string>
+     <string>Test Position</string>
     </property>
    </widget>
   </widget>
@@ -341,7 +262,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>694</width>
+     <width>681</width>
      <height>21</height>
     </rect>
    </property>
