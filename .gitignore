@@ -7,7 +7,7 @@
 *.mp3
 *.jpg
 *.jpeg
-*.png
+# *.png
 *.txt
 *.json
 # *.yaml

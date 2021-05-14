@@ -8,6 +8,8 @@
 
 스크롤바를 통해 상대적 위치를 직관적으로 설정할 수 있으며, 설정 위치를 'Test Position'으로 확인 할 수 있습니다.
 
+![sample image](sample.png)
+
 
 <br>
 

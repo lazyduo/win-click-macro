@@ -85,11 +85,11 @@ class Ui(QtWidgets.QMainWindow):
 
         # TODO thread
         for _ in range(5):
-            time.sleep(self.time_interval)
             origin_hwnd, (init_x, init_y) = macro.get_origin()
             print("original_hwnd : {} / init_x : {} / init_y : {}".format(origin_hwnd, init_x, init_y))
             macro.set_foreground_window()
             macro.click_target_window((self.x_ratio, self.y_ratio))
             macro.back_origin(origin_hwnd, (init_x, init_y))
+            time.sleep(self.time_interval)
         
         return True
