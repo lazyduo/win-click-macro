@@ -51,6 +51,8 @@ class Window:
             self.dic[window[0]] = window[1]
             print(window)
 
+        return win_list
+
     
     def callback(self, hwnd, strings):
         if win32gui.IsWindowVisible(hwnd):
@@ -58,7 +60,7 @@ class Window:
             left, top, right, bottom = win32gui.GetWindowRect(hwnd)
             if window_title and right-left and bottom-top:
                 # strings.append('0x{:08x}: "{}"'.format(hwnd, window_title))
-                strings.append([window_title, hwnd])
+                strings.append('0x{:08x} : {}'.format(hwnd, window_title))
         
         
         return True

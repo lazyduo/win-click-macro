@@ -22,3 +22,8 @@ class Ui(QtWidgets.QMainWindow):
 
     def btn_clicked(self):
         print('hi')
+
+    def load_window_list(self, window_lists):
+        for window_list in window_lists:
+            self.listWidget_1.addItem(window_list)
+

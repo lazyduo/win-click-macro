@@ -22,4 +22,5 @@ if __name__ == '__main__':
 
     app = QtWidgets.QApplication(sys.argv)
     ui = Ui(**cfg['ui'])
+    ui.load_window_list(w.get_window_title())
     app.exec_()
