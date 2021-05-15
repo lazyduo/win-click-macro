@@ -1,8 +1,8 @@
 from PyQt5 import QtWidgets, uic
 from win.window import Window
+import threading
 import time
 import os
-
 
 
 class Ui(QtWidgets.QMainWindow):
@@ -22,6 +22,9 @@ class Ui(QtWidgets.QMainWindow):
         self.time_interval = 1
         self.x_ratio = self.horizontalSliderXPos.value()
         self.y_ratio = self.verticalSliderYPos.value()
+        self.macroThread = None
+        self.stop = False
+        self.stop_event = threading.Event()
 
 
         # widget handle
@@ -32,6 +35,7 @@ class Ui(QtWidgets.QMainWindow):
         self.verticalSliderYPos.valueChanged.connect(self.set_y)
         self.horizontalSliderTimeInterval.valueChanged.connect(self.set_time_interval)
         self.pushButtonTestPos.clicked.connect(self.test_position)
+        self.pushButtonStopMacro.clicked.connect(self.stopMacro)
         # self.text_Edit_4.textChanged.connect(self.get_window)
 
         self.show()
@@ -81,15 +85,38 @@ class Ui(QtWidgets.QMainWindow):
         self.time_interval = self.horizontalSliderTimeInterval.value()
 
         context ={'name': self.selected_window_name, 'hwnd': self.selected_window_hwnd}
-        macro = Window(**context)
+        self.macroThread = threading.Thread(target=self.runMacro, daemon=True, kwargs=context)
+        self.macroThread.start()
 
-        # TODO thread
-        for _ in range(5):
-            origin_hwnd, (init_x, init_y) = macro.get_origin()
-            print("original_hwnd : {} / init_x : {} / init_y : {}".format(origin_hwnd, init_x, init_y))
-            macro.set_foreground_window()
-            macro.click_target_window((self.x_ratio, self.y_ratio))
-            macro.back_origin(origin_hwnd, (init_x, init_y))
-            time.sleep(self.time_interval)
+        # macro = Window(**context)
+
+        # # TODO thread
+        # for _ in range(5):
+        #     self.origin_hwnd, (self.init_x, self.init_y) = macro.get_origin()
+        #     print("original_hwnd : {} / self.init_x : {} / self.init_y : {}".format(self.origin_hwnd, self.init_x, self.init_y))
+        #     macro.set_foreground_window()
+        #     macro.click_target_window((self.x_ratio, self.y_ratio))
+        #     macro.back_origin(self.origin_hwnd, (self.init_x, self.init_y))
+        #     time.sleep(self.time_interval)
         
-        return True
+        # return True
+
+
+
+    def stopMacro(self):
+        self.stop_event.set()
+        print("stop macro...")
+
+    def runMacro(self, **kwargs):
+        self.macro = Window(**kwargs)
+
+        while True:
+            self.origin_hwnd, (self.init_x, self.init_y) = self.macro.get_origin()
+            print("original_hwnd : {} / self.init_x : {} / self.init_y : {}".format(self.origin_hwnd, self.init_x, self.init_y))
+            self.macro.set_foreground_window()
+            self.macro.click_target_window((self.x_ratio, self.y_ratio))
+            self.macro.back_origin(self.origin_hwnd, (self.init_x, self.init_y))
+            if self.stop_event.wait(timeout = self.time_interval):
+                print("macro is stopped...")
+                self.stop_event.clear()
+                return
