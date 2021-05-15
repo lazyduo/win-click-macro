@@ -30,7 +30,7 @@ class Window(object):
         return hwnd
 
     def get_origin(self):
-        hwnd = win32gui.GetActiveWindow()
+        hwnd = win32gui.GetForegroundWindow()
         (x, y) = win32api.GetCursorPos()
         return hwnd, (x, y)
 
