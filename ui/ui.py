@@ -36,6 +36,8 @@ class Ui(QtWidgets.QMainWindow):
         self.horizontalSliderTimeInterval.valueChanged.connect(self.set_time_interval)
         self.pushButtonTestPos.clicked.connect(self.test_position)
         self.pushButtonStopMacro.clicked.connect(self.stopMacro)
+        self.lineEditXPos.editingFinished.connect(self.setHorizontalSlider)
+        self.lineEditYPos.editingFinished.connect(self.setVerticalSlider)
         # self.text_Edit_4.textChanged.connect(self.get_window)
 
         self.show()
@@ -55,12 +57,22 @@ class Ui(QtWidgets.QMainWindow):
         self.pushButtonStartMacro.setEnabled(True)
         self.pushButtonTestPos.setEnabled(True)
 
+    def setHorizontalSlider(self):
+        if self.lineEditXPos.text():
+            x = int(self.lineEditXPos.text())
+            self.horizontalSliderXPos.setValue(x)
+
+    def setVerticalSlider(self):
+        if self.lineEditYPos.text():
+            y = int(self.lineEditYPos.text())
+            self.verticalSliderYPos.setValue(y)
+
     def set_x(self):
-        self.textEditXPos.setText(str(self.horizontalSliderXPos.value()))
+        self.lineEditXPos.setText(str(self.horizontalSliderXPos.value()))
         self.x_ratio = self.horizontalSliderXPos.value()
 
     def set_y(self):
-        self.textEditYPos.setText(str(self.verticalSliderYPos.value()))
+        self.lineEditYPos.setText(str(self.verticalSliderYPos.value()))
         self.y_ratio = self.verticalSliderYPos.value()
 
     def set_time_interval(self):
@@ -83,29 +95,21 @@ class Ui(QtWidgets.QMainWindow):
     def run_macro(self):
         print("run macro...")
         self.time_interval = self.horizontalSliderTimeInterval.value()
+        self.pushButtonStopMacro.setEnabled(True)
+        self.pushButtonStartMacro.setEnabled(False)
+        self.listWidgetWindowlist.setEnabled(False)
 
         context ={'name': self.selected_window_name, 'hwnd': self.selected_window_hwnd}
         self.macroThread = threading.Thread(target=self.runMacro, daemon=True, kwargs=context)
         self.macroThread.start()
-
-        # macro = Window(**context)
-
-        # # TODO thread
-        # for _ in range(5):
-        #     self.origin_hwnd, (self.init_x, self.init_y) = macro.get_origin()
-        #     print("original_hwnd : {} / self.init_x : {} / self.init_y : {}".format(self.origin_hwnd, self.init_x, self.init_y))
-        #     macro.set_foreground_window()
-        #     macro.click_target_window((self.x_ratio, self.y_ratio))
-        #     macro.back_origin(self.origin_hwnd, (self.init_x, self.init_y))
-        #     time.sleep(self.time_interval)
         
-        # return True
-
-
 
     def stopMacro(self):
         self.stop_event.set()
         print("stop macro...")
+        self.pushButtonStopMacro.setEnabled(False)
+        self.pushButtonStartMacro.setEnabled(True)
+        self.listWidgetWindowlist.setEnabled(True)
 
     def runMacro(self, **kwargs):
         self.macro = Window(**kwargs)
