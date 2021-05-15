@@ -14,7 +14,7 @@
    <string>Click Macro</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QSlider" name="horizontalSlider">
+   <widget class="QSlider" name="horizontalSliderTimeInterval">
     <property name="geometry">
      <rect>
       <x>130</x>
@@ -58,7 +58,7 @@
      <string>Click 주기 설정</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="pushButtonStartMacro">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -74,7 +74,7 @@
      <string>시작</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="pushButtonStopMacro">
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -100,7 +100,7 @@
      <string>Click_macro</string>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget_1">
+   <widget class="QListWidget" name="listWidgetWindowlist">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -123,7 +123,7 @@
      <string>Double Click</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_4">
+   <widget class="QTextEdit" name="textEditSelectedWindow">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -136,7 +136,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_2">
+   <widget class="QSlider" name="horizontalSliderXPos">
     <property name="geometry">
      <rect>
       <x>400</x>
@@ -152,7 +152,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QSlider" name="verticalSlider">
+   <widget class="QSlider" name="verticalSliderYPos">
     <property name="geometry">
      <rect>
       <x>600</x>
@@ -174,7 +174,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_6">
+   <widget class="QTextEdit" name="textEditXPos">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -194,7 +194,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_7">
+   <widget class="QTextEdit" name="textEditYPos">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -214,7 +214,7 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="labelTimeInterval">
     <property name="geometry">
      <rect>
       <x>540</x>
@@ -227,7 +227,7 @@ p, li { white-space: pre-wrap; }
      <string>1초</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="pushButtonRefreshWindowlist">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -240,7 +240,7 @@ p, li { white-space: pre-wrap; }
      <string>Refresh</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="pushButtonTestPos">
     <property name="enabled">
      <bool>false</bool>
     </property>

@@ -20,55 +20,55 @@ class Ui(QtWidgets.QMainWindow):
         self.selected_window_hwnd = None
         self.selected_window_name = None
         self.time_interval = 1
-        self.x_ratio = self.horizontalSlider_2.value()
-        self.y_ratio = self.verticalSlider.value()
+        self.x_ratio = self.horizontalSliderXPos.value()
+        self.y_ratio = self.verticalSliderYPos.value()
 
 
         # widget handle
-        self.listWidget_1.itemDoubleClicked.connect(self.set_window_list)
-        self.pushButton_3.clicked.connect(self.run_macro)
-        self.pushButton_5.clicked.connect(self.refresh_list)
-        self.horizontalSlider_2.valueChanged.connect(self.set_x)
-        self.verticalSlider.valueChanged.connect(self.set_y)
-        self.horizontalSlider.valueChanged.connect(self.set_time_interval)
-        self.pushButton_6.clicked.connect(self.test_position)
+        self.listWidgetWindowlist.itemDoubleClicked.connect(self.set_window_list)
+        self.pushButtonStartMacro.clicked.connect(self.run_macro)
+        self.pushButtonRefreshWindowlist.clicked.connect(self.refresh_list)
+        self.horizontalSliderXPos.valueChanged.connect(self.set_x)
+        self.verticalSliderYPos.valueChanged.connect(self.set_y)
+        self.horizontalSliderTimeInterval.valueChanged.connect(self.set_time_interval)
+        self.pushButtonTestPos.clicked.connect(self.test_position)
         # self.text_Edit_4.textChanged.connect(self.get_window)
 
         self.show()
 
 
     def load_window_list(self, window_lists):
-        self.listWidget_1.clear()
+        self.listWidgetWindowlist.clear()
         for window_list in window_lists:
-            self.listWidget_1.addItem(window_list)
+            self.listWidgetWindowlist.addItem(window_list)
 
     def set_window_list(self):
-        self.selected_window = self.listWidget_1.currentItem().text()
+        self.selected_window = self.listWidgetWindowlist.currentItem().text()
         self.selected_window_hwnd = int(self.selected_window.split()[0], 0)
         self.selected_window_name = self.selected_window.split()[-1]
         print("selected window : {}".format(self.selected_window))
-        self.textEdit_4.setText(self.selected_window)
-        self.pushButton_3.setEnabled(True)
-        self.pushButton_6.setEnabled(True)
+        self.textEditSelectedWindow.setText(self.selected_window)
+        self.pushButtonStartMacro.setEnabled(True)
+        self.pushButtonTestPos.setEnabled(True)
 
     def set_x(self):
-        self.textEdit_6.setText(str(self.horizontalSlider_2.value()))
-        self.x_ratio = self.horizontalSlider_2.value()
+        self.textEditXPos.setText(str(self.horizontalSliderXPos.value()))
+        self.x_ratio = self.horizontalSliderXPos.value()
 
     def set_y(self):
-        self.textEdit_7.setText(str(self.verticalSlider.value()))
-        self.y_ratio = self.verticalSlider.value()
+        self.textEditYPos.setText(str(self.verticalSliderYPos.value()))
+        self.y_ratio = self.verticalSliderYPos.value()
 
     def set_time_interval(self):
-        self.label_6.setText("{}초".format(self.horizontalSlider.value()))
+        self.labelTimeInterval.setText("{}초".format(self.horizontalSliderTimeInterval.value()))
 
     def refresh_list(self):
         win = Window()
         window_list = win.get_window_title()
         self.load_window_list(window_list)
-        self.textEdit_4.clear()
-        self.pushButton_3.setEnabled(False)
-        self.pushButton_6.setEnabled(False)
+        self.textEditSelectedWindow.clear()
+        self.pushButtonStartMacro.setEnabled(False)
+        self.pushButtonTestPos.setEnabled(False)
 
     def test_position(self):
         context ={'name': self.selected_window_name, 'hwnd': self.selected_window_hwnd, 'test': True}
@@ -78,7 +78,7 @@ class Ui(QtWidgets.QMainWindow):
 
     def run_macro(self):
         print("run macro...")
-        self.time_interval = self.horizontalSlider.value()
+        self.time_interval = self.horizontalSliderTimeInterval.value()
 
         context ={'name': self.selected_window_name, 'hwnd': self.selected_window_hwnd}
         macro = Window(**context)
